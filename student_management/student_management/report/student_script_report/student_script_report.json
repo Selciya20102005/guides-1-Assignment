@@ -1,0 +1,33 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-07-29 11:56:54.201907",
+ "disable_prepared_report_automation": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-07-29 16:58:20.796531",
+ "modified_by": "Administrator",
+ "module": "Student Management",
+ "name": "Student Script report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Student",
+ "report_name": "Student Script report",
+ "report_script": "def execute(filters=None):\r\n\r\n    columns = [\r\n        {\r\n            \"label\": \"Student Name\",\r\n            \"fieldname\": \"student_name\",\r\n            \"fieldtype\": \"Data\",\r\n            \"width\": 200\r\n        },\r\n        {\r\n            \"label\": \"Roll No\",\r\n            \"fieldname\": \"student_roll_no\",\r\n            \"fieldtype\": \"Int\",\r\n            \"width\": 250\r\n        }\r\n    ]\r\n\r\n    data = frappe.get_all(\r\n        \"Student\",\r\n        fields=[\"student_name\", \"student_roll_no\"],\r\n        \r\n    )\r\n\r\n    result = [columns, data]\r\n    return result",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Test User"
+  }
+ ],
+ "timeout": 0
+}

@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-07-14 23:46:20.844019",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "person_type",
+  "person",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "person_type",
+   "fieldtype": "Link",
+   "label": "Person Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "person",
+   "fieldtype": "Dynamic Link",
+   "label": "Person",
+   "options": "person_type"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-15 10:40:53.814207",
+ "modified_by": "Administrator",
+ "module": "Student Management",
+ "name": "Person Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

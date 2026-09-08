@@ -1,0 +1,504 @@
+{
+ "actions": [
+  {
+   "action": "teacher",
+   "action_type": "Route",
+   "label": "View Departments"
+  },
+  {
+   "action": "fetch",
+   "action_type": "Server Action",
+   "label": "hello"
+  }
+ ],
+ "allow_bulk_edit": 1,
+ "allow_events_in_timeline": 1,
+ "allow_guest_to_view": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-07-14 15:11:21.274130",
+ "default_email_template": "Student Admission Confirmation",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "student_details",
+  "first_name",
+  "last_name",
+  "student_name",
+  "initial",
+  "student_age",
+  "student_roll_no",
+  "student_email",
+  "mail_id_password",
+  "department",
+  "batch",
+  "dept_id",
+  "id_card_barcode",
+  "grade",
+  "cgpa",
+  "admission_date_and_time",
+  "student_guidlines",
+  "address_details",
+  "residential_city",
+  "home_location",
+  "current_address",
+  "hostel_student",
+  "day_scholar",
+  "personal_details",
+  "profile_photo",
+  "date_of_birth",
+  "gender",
+  "mobile_number",
+  "parent_mobile_no",
+  "student_icon",
+  "student_motto",
+  "student_signature",
+  "aadhar_id",
+  "bio",
+  "favourite_color",
+  "additional_personal_details",
+  "academic_details",
+  "total_fees_paid",
+  "suggested_start_timing_of_college",
+  "course_duration",
+  "assigned_to",
+  "assigned_person",
+  "certification_preview",
+  "acheivement_details",
+  "rating_for_extra_tutorials",
+  "feedback",
+  "club_details",
+  "clubs",
+  "assignments",
+  "programming_assignment",
+  "student_instructions",
+  "instructions",
+  "student_report",
+  "student_report_action",
+  "status",
+  "route",
+  "naming_series",
+  "published",
+  "admission_date",
+  "register_no",
+  "marks_obtained",
+  "total_marks",
+  "percentage",
+  "department_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student Name",
+   "options": "Subjects",
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "student_age",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Student Age"
+  },
+  {
+   "fieldname": "student_roll_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Student Roll No",
+   "mask": 1,
+   "sticky": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "student_email",
+   "fieldtype": "Data",
+   "label": "Student Email ID",
+   "not_nullable": 1,
+   "options": "Email",
+   "placeholder": "Enter the email"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Student Department"
+  },
+  {
+   "default": "2023-27\n\n",
+   "fieldname": "batch",
+   "fieldtype": "Int",
+   "label": "Batch"
+  },
+  {
+   "fetch_from": "department.dept_id",
+   "fieldname": "dept_id",
+   "fieldtype": "Int",
+   "label": "Dept ID",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "student_name.grade",
+   "fieldname": "grade",
+   "fieldtype": "Percent",
+   "is_virtual": 1,
+   "label": "Grade"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of birth"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Female\nMale\nOthers",
+   "sort_options": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Phone",
+   "label": "Student Mobile No"
+  },
+  {
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Current Address"
+  },
+  {
+   "default": "0",
+   "fieldname": "hostel_student",
+   "fieldtype": "Check",
+   "label": "Hostel Student"
+  },
+  {
+   "default": "0",
+   "fieldname": "day_scholar",
+   "fieldtype": "Check",
+   "label": "Day Scholar"
+  },
+  {
+   "fieldname": "profile_photo",
+   "fieldtype": "Attach Image",
+   "label": "Profile Photo"
+  },
+  {
+   "fieldname": "total_fees_paid",
+   "fieldtype": "Currency",
+   "is_virtual": 1,
+   "label": "Total fees paid",
+   "placeholder": "Enter the fees paid for this sem"
+  },
+  {
+   "fieldname": "aadhar_id",
+   "fieldtype": "Attach",
+   "label": "Aadhar Id"
+  },
+  {
+   "fieldname": "bio",
+   "fieldtype": "Text Editor",
+   "label": "Bio",
+   "not_nullable": 1
+  },
+  {
+   "fieldname": "suggested_start_timing_of_college",
+   "fieldtype": "Datetime",
+   "label": "suggested start timing of college"
+  },
+  {
+   "description": "Give the rating for the special classes conducted for the purpose of upcoming semester.If any suggestions mention in the feedback section.\n",
+   "fieldname": "rating_for_extra_tutorials",
+   "fieldtype": "Rating",
+   "label": "Rating for extra tutorials"
+  },
+  {
+   "fieldname": "feedback",
+   "fieldtype": "Small Text",
+   "label": "Feedback",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "residential_city",
+   "fieldtype": "Autocomplete",
+   "label": "Residential City",
+   "options": "Chennai\nCoimbatore\nMadurai\nSalem\nTrichy\nBangalore\nHyderabad"
+  },
+  {
+   "fieldname": "id_card_barcode",
+   "fieldtype": "Barcode",
+   "label": "ID Card Barcode"
+  },
+  {
+   "fieldname": "cgpa",
+   "fieldtype": "Float",
+   "label": "CGPA"
+  },
+  {
+   "fieldname": "clubs",
+   "fieldtype": "Table MultiSelect",
+   "label": "Clubs",
+   "options": "Student Clubs"
+  },
+  {
+   "fieldname": "programming_assignment",
+   "fieldtype": "Code",
+   "label": "Programming assignment"
+  },
+  {
+   "fieldname": "course_duration",
+   "fieldtype": "Duration",
+   "label": "Course duration"
+  },
+  {
+   "fieldname": "favourite_color",
+   "fieldtype": "Color",
+   "label": "Favourite color"
+  },
+  {
+   "fieldname": "home_location",
+   "fieldtype": "Geolocation",
+   "label": "Home Location"
+  },
+  {
+   "fieldname": "student_icon",
+   "fieldtype": "Icon",
+   "label": "Student Icon"
+  },
+  {
+   "fieldname": "address_details",
+   "fieldtype": "Heading",
+   "label": "Address Details"
+  },
+  {
+   "fieldname": "personal_details",
+   "fieldtype": "Heading",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "academic_details",
+   "fieldtype": "Heading",
+   "label": "Academic details"
+  },
+  {
+   "fieldname": "club_details",
+   "fieldtype": "Heading",
+   "label": "Club details"
+  },
+  {
+   "fieldname": "assignments",
+   "fieldtype": "Heading",
+   "label": "Assignments"
+  },
+  {
+   "fieldname": "student_details",
+   "fieldtype": "Heading",
+   "label": "Student details"
+  },
+  {
+   "fieldname": "parent_mobile_no",
+   "fieldtype": "Phone",
+   "label": "Parent Mobile No"
+  },
+  {
+   "fieldname": "certification_preview",
+   "fieldtype": "Image",
+   "label": "Certification Preview",
+   "options": "profile_photo"
+  },
+  {
+   "fieldname": "mail_id_password",
+   "fieldtype": "Password",
+   "label": "Mail ID Password"
+  },
+  {
+   "fieldname": "student_signature",
+   "fieldtype": "Signature",
+   "label": "Student Signature"
+  },
+  {
+   "fieldname": "additional_personal_details",
+   "fieldtype": "JSON",
+   "label": "Additional Personal Details"
+  },
+  {
+   "fieldname": "student_instructions",
+   "fieldtype": "Heading",
+   "label": "Student Instructions"
+  },
+  {
+   "fieldname": "instructions",
+   "fieldtype": "HTML",
+   "label": "Instructions"
+  },
+  {
+   "fieldname": "acheivement_details",
+   "fieldtype": "HTML Editor",
+   "label": "Acheivement details"
+  },
+  {
+   "fieldname": "student_guidlines",
+   "fieldtype": "HTML",
+   "label": "Student Guidlines"
+  },
+  {
+   "fieldname": "student_report",
+   "fieldtype": "Button",
+   "label": "Student Report"
+  },
+  {
+   "fieldname": "admission_date_and_time",
+   "fieldtype": "Datetime",
+   "label": "Admission Date and Time"
+  },
+  {
+   "fieldname": "student_motto",
+   "fieldtype": "Text",
+   "label": "Student Motto"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Select",
+   "label": "Assigned To",
+   "options": "Teacher\nStaff Members"
+  },
+  {
+   "fieldname": "assigned_person",
+   "fieldtype": "Dynamic Link",
+   "label": "Assigned Person",
+   "options": "assigned_to"
+  },
+  {
+   "default": "0",
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "student_report_action",
+   "fieldtype": "Button",
+   "label": "View Departments"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "status",
+   "options": "Pending\napproved\nrejected"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "published"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "naming series",
+   "options": "HOSTEL-.YYYY.-.####\nDAY-.YYYY.-.####"
+  },
+  {
+   "fieldname": "admission_date",
+   "fieldtype": "Date",
+   "label": "admission date"
+  },
+  {
+   "fieldname": "register_no",
+   "fieldtype": "Data",
+   "label": "Register No"
+  },
+  {
+   "fieldname": "initial",
+   "fieldtype": "Data",
+   "label": "Initial"
+  },
+  {
+   "fieldname": "marks_obtained",
+   "fieldtype": "Int",
+   "label": "Marks Obtained"
+  },
+  {
+   "fieldname": "total_marks",
+   "fieldtype": "Int",
+   "label": "Total Marks"
+  },
+  {
+   "fieldname": "percentage",
+   "fieldtype": "Int",
+   "label": "Percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "department_name",
+   "fieldtype": "Data",
+   "label": "department name"
+  }
+ ],
+ "grid_page_length": 50,
+ "has_web_view": 1,
+ "image_field": "profile_photo",
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [
+  {
+   "group": "Teacher handled",
+   "link_doctype": "Teacher",
+   "link_fieldname": "student_name"
+  }
+ ],
+ "make_attachments_public": 1,
+ "modified": "2026-07-23 16:52:23.660965",
+ "modified_by": "Administrator",
+ "module": "Student Management",
+ "name": "Student",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Test User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "route",
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "show_name_in_global_search": 1,
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "timeline_field": "department",
+ "track_changes": 1,
+ "track_seen": 1
+}

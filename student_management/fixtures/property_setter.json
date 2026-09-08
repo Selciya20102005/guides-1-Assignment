@@ -1,0 +1,18 @@
+[
+ {
+  "default_value": null,
+  "doc_type": "Tag",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "description",
+  "is_system_generated": 0,
+  "modified": "2026-07-26 12:45:56.301123",
+  "module": null,
+  "name": "Tag-description-read_only",
+  "property": "read_only",
+  "property_type": "Check",
+  "row_name": null,
+  "value": "1"
+ }
+]

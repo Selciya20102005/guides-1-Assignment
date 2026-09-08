@@ -1,0 +1,23 @@
+[
+  {
+    "name": "STU-0001",
+    "student_roll_no": 1,
+    "student_name": "Arun Kumar",
+    "department": "CSE",
+    "cgpa": 9
+  },
+  {
+    "name": "STU-0002",
+    "student_roll_no": 2,
+    "student_name": "Divya R",
+    "department": "ECE",
+    "cgpa": 8
+  },
+  {
+    "name": "fed2s3eslg",
+    "student_roll_no": null,
+    "student_name": "Selciya",
+    "department": "AI&DS",
+    "cgpa": 8
+  }
+]

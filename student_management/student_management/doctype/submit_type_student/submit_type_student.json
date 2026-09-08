@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-07-22 15:41:36.568638",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_7yxl",
+  "amended_from",
+  "student_name",
+  "student_id",
+  "fees_paid",
+  "course_completion",
+  "department",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_7yxl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "submit type student",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "label": "Student name"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "student_id",
+   "fieldtype": "Int",
+   "label": "Student id"
+  },
+  {
+   "fieldname": "fees_paid",
+   "fieldtype": "Int",
+   "label": "fees paid"
+  },
+  {
+   "fieldname": "course_completion",
+   "fieldtype": "Select",
+   "label": "course completion",
+   "options": "completed\nnot completed"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "department"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "status",
+   "options": "Approved\nNot approved"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-07-24 08:31:51.422424",
+ "modified_by": "Administrator",
+ "module": "Student Management",
+ "name": "submit type student",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

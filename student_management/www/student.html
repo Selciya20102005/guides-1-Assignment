@@ -1,0 +1,53 @@
+<!-- <h1>
+Student Profile
+</h1>
+
+
+<h2>
+{{ student.student_name }}
+</h2>
+
+
+<p>
+Roll Number:
+{{ student.student_roll_no }}
+</p>
+
+
+<p>
+Department:
+{{ student.department }}
+</p>
+
+
+<hr>
+
+
+
+
+<p>
+Total Students:
+{{ total_students }}
+</p> -->
+
+
+
+<!-- <h1>Student Profile</h1>
+
+<h2>{{ student.student_name }}</h2>
+
+<p>Roll Number: {{ student.student_roll_no }}</p>
+
+<p>Department: {{ student.department }}</p> -->
+
+
+
+{% extends "templates/student_base.html" %}
+
+{% block page_content %}
+
+<h2>Welcome Student</h2>
+
+<p>This page uses the Student Base Template.</p>
+
+{% endblock %}
