@@ -1,0 +1,41 @@
+<div class="text-center">
+    <h2>ABC College of Engineering</h2>
+    <h3>Student Performance Report</h3>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Department Filter:</strong>
+        <%= filters.department || "All Departments" %>
+    </div>
+</div>
+
+<br>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Batch</th>
+            <th>Grade</th>
+            <th>CGPA</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.forEach(function(row) { %>
+        <tr>
+            <td><%= row.student_name %></td>
+            <td><%= row.student_email %></td>
+            <td><%= row.department %></td>
+            <td><%= row.batch %></td>
+            <td><%= row.grade %></td>
+            <td><%= row.cgpa %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
