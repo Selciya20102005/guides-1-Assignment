@@ -17,6 +17,7 @@ class Teacher(Document):
 		from student_management.student_management.doctype.teacher_student.teacher_student import TeacherStudent
 
 		department: DF.Data | None
+		joining_date: DF.Date | None
 		student_handled: DF.Table[Subjects]
 		student_name: DF.Link | None
 		students: DF.TableMultiSelect[TeacherStudent]

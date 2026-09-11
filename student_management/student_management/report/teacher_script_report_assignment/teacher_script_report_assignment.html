@@ -1,0 +1,28 @@
+<div class="text-center">
+    <h2>ABC College of Engineering</h2>
+    <h3>Teacher Performance Report</h3>
+</div>
+
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Teacher Name</th>
+            <th>Department</th>
+            <th>Joining Date</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.forEach(function(row) { %>
+        <tr>
+            <td><%= row.teacher_name %></td>
+            <td><%= row.department %></td>
+            <td><%= dateutil.str_to_user(row.joining_date) %></td>
+            <td><%= format_money(row.salary) %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

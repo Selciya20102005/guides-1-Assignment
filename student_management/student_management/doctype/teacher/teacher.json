@@ -14,7 +14,8 @@
   "subjects_handles",
   "department",
   "students",
-  "student_name"
+  "student_name",
+  "joining_date"
  ],
  "fields": [
   {
@@ -60,12 +61,18 @@
    "fieldtype": "Link",
    "label": "Student name",
    "options": "Student"
+  },
+  {
+   "fieldname": "joining_date",
+   "fieldtype": "Date",
+   "label": "Joining Date",
+   "options": "Student"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-03 17:06:39.198036",
+ "modified": "2026-09-10 16:16:39.492412",
  "modified_by": "Administrator",
  "module": "Student Management",
  "name": "Teacher",

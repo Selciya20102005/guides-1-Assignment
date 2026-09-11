@@ -8,6 +8,10 @@ app_license = "mit"
 
 export_python_type_annotations = True
 
+
+#  guides-1 Assignment
+fixtures=["Client Script"]
+
 # Assignment
 scheduler_events = {
     "daily": [

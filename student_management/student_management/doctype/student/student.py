@@ -9,6 +9,66 @@ import re
 
 
 class Student(Document):
+    # begin: auto-generated types
+    # This code is auto-generated. Do not modify anything in this block.
+
+    from typing import TYPE_CHECKING
+
+    if TYPE_CHECKING:
+        from frappe.types import DF
+        from student_management.student_management.doctype.student_clubs.student_clubs import StudentClubs
+
+        aadhar_id: DF.Attach | None
+        acheivement_details: DF.HTMLEditor | None
+        additional_personal_details: DF.JSON | None
+        admission_date: DF.Date | None
+        admission_date_and_time: DF.Datetime | None
+        assigned_person: DF.DynamicLink | None
+        assigned_to: DF.Literal["Teacher", "Staff Members"]
+        batch: DF.Int
+        bio: DF.TextEditor
+        cgpa: DF.Float
+        clubs: DF.TableMultiSelect[StudentClubs]
+        course_duration: DF.Duration | None
+        current_address: DF.SmallText | None
+        date_of_birth: DF.Date | None
+        day_scholar: DF.Check
+        department: DF.Link | None
+        department_name: DF.Data | None
+        dept_id: DF.Int
+        favourite_color: DF.Color | None
+        feedback: DF.SmallText | None
+        first_name: DF.Data | None
+        gender: DF.Literal["Female", "Male", "Others"]
+        home_location: DF.Geolocation | None
+        hostel_student: DF.Check
+        id_card_barcode: DF.Barcode | None
+        initial: DF.Data | None
+        last_name: DF.Data | None
+        mail_id_password: DF.Password | None
+        marks_obtained: DF.Int
+        mobile_number: DF.Phone | None
+        naming_series: DF.Literal["HOSTEL-.YYYY.-.####", "DAY-.YYYY.-.####"]
+        parent_mobile_no: DF.Phone | None
+        percentage: DF.Int
+        profile_photo: DF.AttachImage | None
+        programming_assignment: DF.Code | None
+        published: DF.Check
+        rating_for_extra_tutorials: DF.Rating
+        register_no: DF.Data | None
+        residential_city: DF.Autocomplete | None
+        route: DF.Data | None
+        status: DF.Literal["Pending", "approved", "rejected"]
+        student_age: DF.Check
+        student_email: DF.Data
+        student_icon: DF.Icon | None
+        student_motto: DF.Text | None
+        student_name: DF.Data | None
+        student_roll_no: DF.Int
+        student_signature: DF.Signature | None
+        suggested_start_timing_of_college: DF.Datetime | None
+        total_marks: DF.Int
+    # end: auto-generated types
 
     def before_insert(self):
         self.admission_date=frappe.utils.today()

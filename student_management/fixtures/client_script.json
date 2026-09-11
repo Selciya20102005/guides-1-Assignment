@@ -1,0 +1,189 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-07-16 18:40:24.753698",
+  "module": "Student Management",
+  "name": "Student",
+  "script": "frappe.ui.form.on('Student', {\n\trefresh(frm) {\n\t\t// your code here\n\t\tfrappe.msgprint(\"welcome\");\n\t}\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-07-16 19:10:34.105217",
+  "module": "Student Management",
+  "name": "Student report",
+  "script": "frappe.ui.form.on('Student', {\n  student_report:function(frm){\n      if(frm.is_new()){\n          frappe.msgprint(\"please save the student form\");\n          return;\n      }\n    frappe.set_route(\"print\",frm.doctype,frm.doc.name);\n      \n  }\n})",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-07-30 14:52:15.145072",
+  "module": "Student Management",
+  "name": "client list script",
+  "script": "frappe.listview_settings[\"Student\"] = {\r\n    onload(listview) {\r\n        frappe.msgprint(\"Student List Loaded\");\r\n    },\r\n\r\n    get_indicator(doc) {\r\n        if (doc.student_status === \"Approved\") {\r\n            return [\"Approved\", \"green\", \"student_status,=,Approved\"];\r\n        }\r\n\r\n        if (doc.student_status === \"Applied\") {\r\n            return [\"Applied\", \"orange\", \"student_status,=,Applied\"];\r\n        }\r\n\r\n        if (doc.student_status === \"Rejected\") {\r\n            return [\"Rejected\", \"red\", \"student_status,=,Rejected\"];\r\n        }\r\n\r\n        return [\"Draft\", \"gray\", \"student_status,=,Draft\"];\r\n    },\r\n\r\n    button: {\r\n        show(doc) {\r\n            return true;\r\n        },\r\n\r\n        get_label() {\r\n            return \"Open Department\";\r\n        },\r\n\r\n        get_description(doc) {\r\n            return \"Go to Student Department List\";\r\n        },\r\n\r\n        action(doc) {\r\n            frappe.set_route(\"List\", \"Student Department\");\r\n        }\r\n    }\r\n};",
+  "view": "List"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Privacy Request",
+  "enabled": 1,
+  "modified": "2026-08-05 12:59:04.787835",
+  "module": null,
+  "name": "Privacy Request Button",
+  "script": "frappe.ui.form.on(\"Privacy Request\", {\r\n\r\n    refresh(frm) {\r\n\r\n        if (!frm.is_new() && frm.doc.status != \"Completed\") {\r\n\r\n            frm.add_custom_button(\"Process Privacy Request\", function () {\r\n\r\n                frappe.call({\r\n                    method: \"college_management.api.process_privacy_request\",\r\n                    args: {\r\n                        docname: frm.doc.name\r\n                    },\r\n                    callback: function(r) {\r\n\r\n                        frappe.msgprint(r.message);\r\n\r\n                        frm.reload_doc();\r\n\r\n                    }\r\n                });\r\n\r\n            });\r\n\r\n        }\r\n\r\n    }\r\n\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-08-07 17:29:50.609149",
+  "module": null,
+  "name": "extension method",
+  "script": "frappe.ui.form.on(\"Student\", {\r\n    refresh(frm) {\r\n\r\n        if (frm.is_new()) {\r\n            return;\r\n        }\r\n\r\n        frm.add_custom_button(\"Get Student Info\", function () {\r\n\r\n            frappe.call({\r\n                method: \"student_management.student_management.doctype.student.student.get_student_info\",\r\n                args: {\r\n                    student_name: frm.doc.name\r\n                },\r\n                callback: function (r) {\r\n                    if (r.message) {\r\n                        frappe.msgprint(r.message);\r\n                    }\r\n                }\r\n            });\r\n\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-08-07 18:40:37.928707",
+  "module": null,
+  "name": "Cache custom",
+  "script": "frappe.ui.form.on(\"Student\", {\r\n    refresh(frm) {\r\n\r\n        frm.add_custom_button(\"Check Student Cache\", function () {\r\n\r\n            frappe.call({\r\n                method: \"student_management.cache.get_cached_student_count\",\r\n\r\n                callback: function(r) {\r\n\r\n                    if (r.message) {\r\n                        frappe.msgprint(\r\n                            \"Student Count: \" + r.message.count +\r\n                            \"<br>Source: \" + r.message.source\r\n                        );\r\n                    }\r\n\r\n                }\r\n            });\r\n\r\n        });\r\n\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-08-18 15:21:17.881509",
+  "module": null,
+  "name": "realtime script",
+  "script": "frappe.realtime.on(\"student_realtime_demo\", (data) => {\r\n    frappe.show_alert({\r\n        message: data.message,\r\n        indicator: \"green\"\r\n    });\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Teacher",
+  "enabled": 1,
+  "modified": "2026-08-20 10:43:58.903456",
+  "module": null,
+  "name": "custom button for msgprint",
+  "script": "frappe.ui.form.on(\"Teacher\", {\r\n    refresh: function(frm) {\r\n        frm.add_custom_button(\"Test Basic Msgprint\", () => {\r\n            frappe.call({ method: \"student_management.api.test_basic\" });\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-08-25 12:23:12.527191",
+  "module": null,
+  "name": "set_query",
+  "script": "frappe.ui.form.on('Student', {\r\n\r\n    setup(frm) {\r\n\r\n        frm.set_query('teacher', () => {\r\n\r\n            return {\r\n                filters: {\r\n                    status2: 'Inactive'\r\n                }\r\n            };\r\n\r\n        });\r\n\r\n    }\r\n\r\n});\r\n\r\n// frappe.ui.form.on('Student', {\r\n//     setup(frm) {\r\n//         frm.set_query('teacher', () => {\r\n//             return {\r\n//                 filters: {\r\n//                     student_group: frm.doc.student_group\r\n//                 }\r\n//             };\r\n//         });\r\n//     }\r\n// });",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Teacher",
+  "enabled": 1,
+  "modified": "2026-08-24 19:15:02.158773",
+  "module": null,
+  "name": "teacher add child rec",
+  "script": "frappe.ui.form.on('Teacher', {\r\n    refresh(frm) {\r\n        frm.add_custom_button('Add Subject Row', () => {\r\n\r\n            let row = frm.add_child('student_handled', {\r\n                subject_1: 'Mathematics',\r\n                subject_2: 'Physics',\r\n                student_name: 'John',\r\n                grade: '10'\r\n            });\r\n\r\n            frm.refresh_field('student_handled');\r\n\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "ToDo",
+  "enabled": 1,
+  "modified": "2026-08-25 10:39:16.063031",
+  "module": null,
+  "name": "call fro todo",
+  "script": "frappe.ui.form.on('ToDo', {\r\n    refresh(frm) {\r\n\r\n        frm.call('get_linked_doc', {\r\n            throw_if_missing: true\r\n        }).then(r => {\r\n\r\n            if (r.message) {\r\n\r\n                const linked_doc = r.message;\r\n\r\n                console.log(linked_doc);\r\n\r\n            }\r\n\r\n        });\r\n\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student",
+  "enabled": 1,
+  "modified": "2026-08-25 11:05:39.159836",
+  "module": null,
+  "name": "call for student",
+  "script": "frappe.ui.form.on('Student', {\r\n\r\n    refresh(frm) {\r\n\r\n        console.log(\"Student form loaded\");\r\n\r\n        if (!frm.doc.student_group) {\r\n            console.log(\"No Student Group selected\");\r\n            return;\r\n        }\r\n\r\n        frm.call('get_student_group', {\r\n            throw_if_missing: true\r\n        })\r\n        .then(r => {\r\n\r\n            console.log(\"Server response:\", r);\r\n\r\n            if (r.message) {\r\n\r\n                const student_group = r.message;\r\n\r\n                console.log(\r\n                    \"Student Group:\",\r\n                    student_group\r\n                );\r\n\r\n                frappe.msgprint(\r\n                    `Student Group: ${student_group.name}`\r\n                );\r\n            }\r\n\r\n        })\r\n        .catch(error => {\r\n\r\n            console.error(\r\n                \"Error calling Python:\",\r\n                error\r\n            );\r\n\r\n        });\r\n\r\n    }\r\n\r\n});\r\nfrappe.ui.form.on('Student', {\r\n\r\n    refresh(frm) {\r\n        frm.trigger('set_mandatory_fields');\r\n    },\r\n\r\n    set_mandatory_fields(frm) {\r\n\r\n        frm.toggle_reqd(\r\n            'student_email',\r\n            frm.doc.student_status === 'Approved'\r\n        );\r\n\r\n    }\r\n\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Teacher",
+  "enabled": 1,
+  "modified": "2026-08-26 18:25:12.543325",
+  "module": null,
+  "name": "get_route",
+  "script": "frappe.ui.form.on(\"Teacher\", {\r\n    refresh(frm) {\r\n        frm.add_custom_button(\"Check Current Route\", () => {\r\n            let route = frappe.get_route();\r\n\r\n            console.log(route);\r\n        });\r\n    }\r\n});\r\nfrappe.ui.form.on(\"Teacher\", {\r\n    refresh(frm) {\r\n\r\n        frm.add_custom_button(\"Show Formatted Salary\", () => {\r\n\r\n            let formatted_salary = frappe.format(frm.doc.salary, {\r\n                fieldtype: \"Currency\"\r\n            });\r\n\r\n            // Remove spaces around the currency amount\r\n            formatted_salary = formatted_salary.replace(/\\s+/g, \"\");\r\n\r\n            frappe.msgprint({\r\n                title: \"Teacher Salary\",\r\n                message: `\r\n                    <b>Teacher:</b> ${frm.doc.teacher_name}<br>\r\n                    <b>Salary:</b> ${formatted_salary}\r\n                `\r\n            });\r\n        });\r\n\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Teacher",
+  "enabled": 1,
+  "modified": "2026-08-27 14:56:17.109483",
+  "module": null,
+  "name": "teacher tour",
+  "script": "frappe.ui.form.on(\"Teacher\", {\r\n    onload(frm) {\r\n        const tour_name = \"creating the teacher\";\r\n\r\n        frm.tour.init({ tour_name }).then(() => {\r\n            frm.tour.start();\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Student Group",
+  "enabled": 1,
+  "modified": "2026-08-27 17:14:24.213587",
+  "module": null,
+  "name": "student group tour",
+  "script": "frappe.ui.form.on(\"Student Group\", {\r\n    onload(frm) {\r\n        const tour_name = \"student group tour\";\r\n\r\n        frm.tour.init({ tour_name }).then(() => {\r\n            frm.tour.start();\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Teacher",
+  "enabled": 0,
+  "modified": "2026-08-28 12:39:38.599068",
+  "module": null,
+  "name": "task button",
+  "script": "frappe.ui.form.on(\"Teacher\", {\r\n    refresh(frm) {\r\n        frm.add_custom_button(\"Create Task\", () => {\r\n            let dialog = new frappe.ui.Dialog({\r\n                title: \"Create Task\",\r\n\r\n                fields: [\r\n                    {\r\n                        label: \"Task Subject\",\r\n                        fieldname: \"task_subject\",\r\n                        fieldtype: \"Data\",\r\n                        reqd: 1\r\n                    }\r\n                ],\r\n\r\n                primary_action_label: \"Create Task\",\r\n\r\n                primary_action(values) {\r\n                    frappe.call({\r\n                        method: \"student_management.task_api.create_task\",\r\n\r\n                        args: {\r\n                            task_subject: values.task_subject\r\n                        },\r\n\r\n                        callback(response) {\r\n                            dialog.hide();\r\n\r\n                            frappe.msgprint({\r\n                                title: \"Success\",\r\n                                message: `Task ${response.message} created successfully.`,\r\n                                indicator: \"green\"\r\n                            });\r\n                        }\r\n                    });\r\n                }\r\n            });\r\n\r\n            dialog.show();\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "User",
+  "enabled": 1,
+  "modified": "2026-09-11 13:01:54.016159",
+  "module": null,
+  "name": "User Invitation",
+  "script": "frappe.ui.form.on('User', {\n\trefresh(frm) {\n\t\t// your code here\n\t\tfrm.add_custom_button(\"Send Welcome Email\",function(){\n\t\t    frappe.msgprint(\"Email Sent!\");\n\t\t},\n\t\t\"Actions\")\n\t}\n})",
+  "view": "Form"
+ }
+]
