@@ -1,6 +1,10 @@
 guides-1 Assignment
 
+File Path:
+
 student_management/hooks.py
+
+student_management/fixtures/client_script.json
 
 
 
