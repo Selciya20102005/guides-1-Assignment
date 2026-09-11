@@ -1,14 +1,6 @@
-JavaScript Code 
+guides-1 Assignment
 
-The complete JavaScript code for this assignment is located at:
 
-student_management/student_management/doctype/student_id_details/student_id_details.js
-
-Drive Link
-
-https://drive.google.com/file/d/1DcPSpauVP5uf8FkGOYAOUgYD8NmXIiKk/view?usp=sharing
-
-https://drive.google.com/file/d/1O0QGzZnrKv7U-F5482tgh4gCrzHfchuv/view?usp=sharing
 
 
 
